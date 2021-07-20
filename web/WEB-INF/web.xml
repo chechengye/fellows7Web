@@ -3,9 +3,38 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <welcome-file-list>
-        <welcome-file>test.html</welcome-file>
-    </welcome-file-list>
+   
+    
+    <servlet>
+        <!--名称任意，不能出现中文与空格。必须会让servlet-mapping元素中的servlet-name元素引用-->
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>web03.MyServlet</servlet-class>
+        <!--配置指向一个Servlet类 （实现了Servlet接口的类 / 继承了HttpServlet类）-->
+        <init-param>
+            <param-name>jdbc.url</param-name>
+            <param-value>http:///xx</param-value>
+        </init-param>
+        <!--正整数越小启动优先级越高 不建议使用1 .可能会优于其他内置Servlet启动，而导致问题-->
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <!--找寻在web.xml中配置的某一个servlet元素-->
+        <servlet-name>MyServlet</servlet-name>
+        <!--浏览器/前端/移动端访问的路径 /路由-->
+        <!--完全匹配 访问的资源与配置的资源完全相同才能访问到-->
+        <url-pattern>/myServlet</url-pattern>
+        <!--目录匹配 * 代表任意-->
+        <url-pattern>/my/*</url-pattern>
+        <!--扩展名匹配 *.xxx-->
+        <url-pattern>*.action</url-pattern>
+
+        <!--注意：目录匹配与扩展名匹配不能混用-->
+        <!--<url-pattern>/aaa/bbb/*.action</url-pattern>-->
+        <!--缺省的配置，此Servlet就一定会被执行 .静态资源会被占用-->
+        <url-pattern>/</url-pattern>
+
+    </servlet-mapping>
 
 
 </web-app>
