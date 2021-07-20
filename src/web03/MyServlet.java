@@ -30,7 +30,7 @@ public class MyServlet implements Servlet{
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
         System.out.println("服务方法...");
         //处理响应回页面的中文乱码问题
-       /* servletResponse.setContentType("text/html;charset=utf-8");
+        servletResponse.setContentType("text/html;charset=utf-8");
         servletResponse.getWriter().write("<html lang=\"en\">");
         servletResponse.getWriter().write("<head>");
         servletResponse.getWriter().write("<meta charset=\"UTF-8\">");
@@ -39,7 +39,7 @@ public class MyServlet implements Servlet{
         servletResponse.getWriter().write("<body>");
         servletResponse.getWriter().write("测试Write方法");
         servletResponse.getWriter().write("</body>");
-        servletResponse.getWriter().write("</html>");*/
+        servletResponse.getWriter().write("</html>");
 
         //System.out.println("域对象中的值： " + this.getServletConfig().getServletContext().getAttribute("name"));
     }
