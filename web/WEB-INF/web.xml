@@ -35,7 +35,7 @@
         <!--注意：目录匹配与扩展名匹配不能混用-->
         <!--<url-pattern>/aaa/bbb/*.action</url-pattern>-->
         <!--缺省的配置，此Servlet就一定会被执行 .静态资源会被占用-->
-        <url-pattern>/</url-pattern>
+        <!--<url-pattern>/</url-pattern>-->
 
     </servlet-mapping>
 
