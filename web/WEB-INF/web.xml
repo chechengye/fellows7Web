@@ -3,7 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-   
+    <context-param>
+        <param-name>testContext</param-name>
+        <param-value>测试上下文对象</param-value>
+    </context-param>
     
     <servlet>
         <!--名称任意，不能出现中文与空格。必须会让servlet-mapping元素中的servlet-name元素引用-->
@@ -15,7 +18,7 @@
             <param-value>http:///xx</param-value>
         </init-param>
         <!--正整数越小启动优先级越高 不建议使用1 .可能会优于其他内置Servlet启动，而导致问题-->
-        <load-on-startup>3</load-on-startup>
+        <!--<load-on-startup>3</load-on-startup>-->
     </servlet>
 
     <servlet-mapping>
