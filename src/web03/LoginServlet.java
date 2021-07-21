@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet{
         UmsUser umsUser = login(username, password);
         if(null != umsUser){
             //携带用户信息过去
+
             resp.sendRedirect(req.getContextPath() + "/index.jsp");
         }else{
             //应该回到login.html 并提示用户名与密码
