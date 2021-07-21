@@ -29,6 +29,9 @@ public class LoginServlet extends HttpServlet{
         }else{
             //应该回到login.html 并提示用户名与密码
             System.out.println("用户名或密码错误");
+            req.setAttribute("errMsg" , "用户名或密码错误");
+            req.getRequestDispatcher("/login.jsp").forward(req , resp);//forward:一定要写
+
         }
     }
 
