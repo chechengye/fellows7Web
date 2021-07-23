@@ -7,9 +7,7 @@ import web02.bean.UmsUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -25,7 +23,12 @@ public class LoginServlet extends HttpServlet{
         UmsUser umsUser = login(username, password);
         if(null != umsUser){
             //携带用户信息过去
-
+            //session域来存储对象
+            HttpSession session = req.getSession();
+            Cookie cookie = new Cookie("JSESSIONID" , session.getId());
+            cookie.setMaxAge(60*30);
+            resp.addCookie(cookie);
+            session.setAttribute("user",umsUser);
             resp.sendRedirect(req.getContextPath() + "/index.jsp");
         }else{
             //应该回到login.html 并提示用户名与密码

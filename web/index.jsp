@@ -1,4 +1,4 @@
-<%--
+<%@ page import="web02.bean.UmsUser" %><%--
   Created by IntelliJ IDEA.
   User: Think
   Date: 2021/7/16
@@ -11,6 +11,7 @@
     <title>Web应用</title>
   </head>
   <body>
+  <%="欢迎," + ((UmsUser)session.getAttribute("user")).getName()%>
   第一次部署Web应用
   </body>
 </html>
