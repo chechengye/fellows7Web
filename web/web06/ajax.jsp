@@ -10,7 +10,7 @@
 <head>
     <title>异步Ajax访问</title>
 </head>
-
+<script src="../js/jquery-1.11.3.min.js"></script>
 <script>
 
     function testFn() {
@@ -58,12 +58,39 @@
 
     }
 
+    function testJQFnGet() {
+        $.get("${pageContext.request.contextPath}/ajax", { "name": "John", "time": "2pm" },
+            function(data){//监听函数
+                alert("Data Loaded: " + data);
+            } , "text");
+    }
+
+    function testJQAjaxFn() {
+        //推荐使用的ajax异步技术
+        $.ajax({
+            type: "POST",
+            url: "${pageContext.request.contextPath}/ajax",
+            data: { "name": "John", "time": "2pm" },
+            success: function(data){
+                alert( "Data Saved: " + data.name );
+            },
+            error:function (data) {
+              alert("错误监听...")
+            },
+            dataType: "json" ,
+            async : true
+        });
+    }
 
 </script>
 <body>
     <input type="button" value="测试JS发起Ajax请求异步" onclick="testFn()"/>
 
     <input type="button" value="测试JS发起Ajax请求同步" onclick="testFnPost()"/>
+
+    <input type="button" value="测试JQ发起GET请求异步" onclick="testJQFnGet()"/>
+
+    <input type="button" value="测试JQ发起Ajax请求" onclick="testJQAjaxFn()"/>
 
     <input type="button" value="Test" onclick="alert('test')"/>
 </body>
